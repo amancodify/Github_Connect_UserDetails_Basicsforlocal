@@ -1,0 +1,20 @@
+var express = require("express");
+var app = express();
+var route = require("./route");
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+var PORT = process.env.PORT || 3000;
+
+app.use("/api", route.Router);
+console.log("                                                               /$$                               /$$                ");
+console.log("                                                              | $$                              | $$                ");
+console.log("  /$$$$$$$  /$$$$$$  /$$$$$$$  /$$$$$$$   /$$$$$$   /$$$$$$$ /$$$$$$          /$$$$$$   /$$$$$$$| $$$$$$$   /$$$$$$ ");
+console.log(" /$$_____/ /$$__  $$| $$__  $$| $$__  $$ /$$__  $$ /$$_____/|_  $$_/         /$$__  $$ /$$_____/| $$__  $$ /$$__  $$");
+console.log("| $$      | $$  \\ $$| $$  \\ $$| $$  \\ $$| $$$$$$$$| $$        | $$          | $$$$$$$$| $$      | $$  \\ $$| $$  \\ $$");
+console.log("| $$      | $$  | $$| $$  | $$| $$  | $$| $$_____/| $$        | $$ /$$      | $$_____/| $$      | $$  | $$| $$  | $$");
+console.log("|  $$$$$$$|  $$$$$$/| $$  | $$| $$  | $$|  $$$$$$$|  $$$$$$$  |  $$$$/      |  $$$$$$$|  $$$$$$$| $$  | $$|  $$$$$$/");
+console.log(" \\_______/ \\______/ |__/  |__/|__/  |__/ \\_______/ \\_______/   \\___/         \\_______/ \\_______/|__/  |__/ \\______/ ");
+console.log("                                                                                                                    ");
+console.log(`Listening on Port:${PORT}...`);
+app.listen(PORT);
