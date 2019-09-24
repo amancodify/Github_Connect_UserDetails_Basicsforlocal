@@ -7,12 +7,22 @@ const usernamesSchema = new mongoose.Schema({
 });
 
 const userdetailsSchema = new mongoose.Schema({
-    Name: String,
-    Email: String,
-    Description: String,
-    Profile_website: String,
+    name: String,
+    email: String,
+    bio: String,
+    location : String,
+    blog: String,
     company: String,
-    username: String,
+    login: { type: String, unique: true },
+    public_repos: Number,
+    public_gists: Number,
+    followers: Number,
+    following: Number,
+    hireable: Boolean,
+    created_at: Date,
+    updated_at: Date,
+    type: String,
+    site_admin: Boolean,
     Repositories: Array,
     Timestamp: { type: Date, default: Date.now },
 });

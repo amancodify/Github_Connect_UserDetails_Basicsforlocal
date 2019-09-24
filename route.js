@@ -33,8 +33,8 @@ Router.post("/createuserdetails", async function (req, res) {
     res.json({ d: await GitUserDetailsController.getUserDetails(req.body.Username) });
 });
 
-Router.get("/getoneusername/", async function (req, res) {
-    res.json({ d: await GitUserDetailsController.getSingleusername() });
+Router.get("/getusernamesbatch/", async function (req, res) {
+    res.json({ d: await GitUserDetailsController.getusernamesbatch() });
 });
 
 exports.Router = Router;
