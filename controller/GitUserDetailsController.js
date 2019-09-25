@@ -124,7 +124,7 @@ function shuffle(array) {
 async function launch() {
     const activelambdas = getActiveLambdas();
     console.log("\n Total ", activelambdas.length, " Lambdas are Active !!\n");
-    if (activelambdas.length > 0) {
+    if (activelambdas.length > 6) {
         const shuffledlambda = await shuffle(activelambdas);
         const usernames = await getusernamesbatch(shuffledlambda.length);
         for (let i = 0; i < shuffledlambda.length; i++) {
@@ -132,7 +132,7 @@ async function launch() {
         }
     }
     else {
-        console.log("\n*************************All Lambda Servers Dead. . .Time to wait**************************\n")
+        console.log("\n*************************All Lambda Servers Needs Rest. . .Time to wait ('_')**************************\n")
         intervalManager(false);
         resetLambdas();
         restart();
