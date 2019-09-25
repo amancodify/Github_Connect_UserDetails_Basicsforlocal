@@ -1,7 +1,7 @@
 var UserService = require("../service/UserService");
 var UserModel = require('../model/UserModel');
 const axios = require('axios');
-var random_time = Math.floor(Math.random() * (100000 - 90000) + 90000);
+var random_time = Math.floor(Math.random() * (70000 - 60000) + 60000);
 var refreshIntervalId = null;
 var lambda_urls = [
     { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio", active: true },
