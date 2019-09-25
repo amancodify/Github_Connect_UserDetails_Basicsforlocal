@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 var UserModel = require('../model/UserModel');
-mongoose.connect('mongodb://localhost/GitHub_DB', { useNewUrlParser: true })
-    //mongoose.connect('mongodb+srv://echo_github_write_access:Dbn47XMj9KouRgmA@cluster0-yjgj9.mongodb.net/github?retryWrites=true&w=majority', { useNewUrlParser: true })
+// mongoose.connect('mongodb://localhost/GitHub_DB', { useNewUrlParser: true })
+    mongoose.connect('mongodb+srv://echo_github_write_access:Dbn47XMj9KouRgmA@cluster0-yjgj9.mongodb.net/github?retryWrites=true&w=majority', { useNewUrlParser: true })
     .then(() => console.log('Connected to MongoDB...\n'))
     .catch(err => console.error('Cannot connect to DB', err))
 
@@ -13,8 +13,8 @@ exports.createUserDetails = async function (userdetails, id, username) {
         }
         else {
             console.log("-------------------------------------------------------------------------------------------------");
-            console.log("|\tCurrent user Fetched from MongoDB---------------------> [\x1b[36m", username, "\x1b[37m]");
-            console.log(`|\t\x1b[32mHurry!! Details of the user \x1b[32m inserted successfully into MongoDB...\x1b[37m`);
+            console.log("|\tCurrent user Fetched from MongoDB-------------------> [\x1b[36m", username, "\x1b[37m]");
+            console.log(`|\t\x1b[32mHurry!! Details of the user \x1b[32m inserted successfully into MongoDB...\x1b[37m\t\t\t|`);
             UserModel.totalUserDetails_count();
             exports.updateUsernamesFlags(id);
         }

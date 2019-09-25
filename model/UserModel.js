@@ -33,7 +33,7 @@ function totalUserDetails_count() {
             console.log('Error While fetching the usernames count !!', err);
         }
         else {
-            console.log(`|\t\x1b[33mTotal ${c} Items Inserted till now !!\x1b[37m`);
+            console.log(`|\t\x1b[33mTotal ${c} Items Inserted till now !!\x1b[37m\t\t\t\t\t\t\t|`);
             console.log("-------------------------------------------------------------------------------------------------");
         }
     });

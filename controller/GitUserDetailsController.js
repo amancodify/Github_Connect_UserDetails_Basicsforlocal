@@ -1,7 +1,7 @@
 var UserService = require("../service/UserService");
 var UserModel = require('../model/UserModel');
 const axios = require('axios');
-var random_time = Math.floor(Math.random() * (60000 - 50000) + 50000);
+var random_time = Math.floor(Math.random() * (120000 - 90000) + 90000);
 var refreshIntervalId = null;
 var lambda_urls = [
     { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio", active: true },
@@ -31,7 +31,7 @@ async function getUserDetails(username, id, lambdaurl) {
     })
         .then(response => {
             userDetails = response.data
-            if (userDetails != null) {
+            if (userDetails != null || undefined) {
                 var gituserdetail = new UserModel.UserDetails({
                     name: userDetails.name,
                     email: userDetails.email,
@@ -62,9 +62,17 @@ async function getUserDetails(username, id, lambdaurl) {
             }
         })
         .catch(error => {
-            console.log(error.response.data.message);
-            deactivateLambda(lambdaurl);
-            return UserService.revertUsernamesFlags(id);
+            var err = error.response;
+            if (err != undefined) {
+                console.log(`Lambda [ ${lambdaurl} ] is down !! `,  err.data.message);
+                deactivateLambda(lambdaurl);
+                return UserService.revertUsernamesFlags(id);
+            }
+            else {
+                console.log(`Lambda [ ${lambdaurl} ] is down !!  Some Other Error !!`);
+                deactivateLambda(lambdaurl);
+                return UserService.revertUsernamesFlags(id);
+            }
         });
 }
 
@@ -83,7 +91,7 @@ function restart() {
     setTimeout(() => {
         console.log("\nRestarting. . .\n");
         intervalManager(true, launch, random_time);
-    }, 900000 * 6);
+    }, 900000 * 6); //900000 is 15 minutes
 }
 
 function deactivateLambda(url) {
@@ -115,20 +123,19 @@ function shuffle(array) {
 
 async function launch() {
     const activelambdas = getActiveLambdas();
-    console.log("\n Total ",activelambdas.length," Lambdas are Active !!\n");
+    console.log("\n Total ", activelambdas.length, " Lambdas are Active !!\n");
     if (activelambdas.length > 0) {
         const shuffledlambda = await shuffle(activelambdas);
         const usernames = await getusernamesbatch(shuffledlambda.length);
         for (let i = 0; i < shuffledlambda.length; i++) {
-           await getUserDetails(usernames[i].Username, usernames[i]._id, shuffledlambda[i]);
+            await getUserDetails(usernames[i].Username, usernames[i]._id, shuffledlambda[i]);
         }
-        
     }
     else {
         console.log("\n*************************All Lambda Servers Dead. . .Time to wait**************************\n")
         intervalManager(false);
-        restart();
         resetLambdas();
+        restart();
         return await UserService.updateBrokenUsernames();
     }
 }
