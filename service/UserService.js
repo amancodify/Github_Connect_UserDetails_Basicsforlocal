@@ -13,8 +13,8 @@ exports.createUserDetails = async function (userdetails, id, username) {
         }
         else {
             console.log("-------------------------------------------------------------------------------------------------");
-            console.log("|\tCurrent user Fetched from MongoDB---------------------> [\x1b[36m", username, "\x1b[37m] \t\t\t|");
-            console.log(`|\t\x1b[32mHurry!! Details of ${username} \x1b[32m is inserted successfully into MongoDB...\x1b[37m\t\t|`);
+            console.log("|\tCurrent user Fetched from MongoDB---------------------> [\x1b[36m", username, "\x1b[37m]");
+            console.log(`|\t\x1b[32mHurry!! Details of the user \x1b[32m inserted successfully into MongoDB...\x1b[37m`);
             UserModel.totalUserDetails_count();
             exports.updateUsernamesFlags(id);
         }
