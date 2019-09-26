@@ -64,12 +64,12 @@ async function getUserDetails(username, id, lambdaurl) {
         .catch(error => {
             var err = error.response;
             if (err != undefined) {
-                console.log(`Lambda [ ${lambdaurl} \t\t] is down !! `,  err.data.message);
+                console.log(`Lambda [ ${lambdaurl} ]   is down !! `,  err.data.message);
                 deactivateLambda(lambdaurl);
                 return UserService.revertUsernamesFlags(id);
             }
             else {
-                console.log(`Lambda [ ${lambdaurl} \t\t] is down !!  Some Other Error !!`);
+                console.log(`Lambda [ ${lambdaurl} ]   is down !!  Some Other Error !!`);
                 deactivateLambda(lambdaurl);
                 return UserService.revertUsernamesFlags(id);
             }
