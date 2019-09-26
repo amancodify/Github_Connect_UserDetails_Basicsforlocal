@@ -64,12 +64,12 @@ async function getUserDetails(username, id, lambdaurl) {
         .catch(error => {
             var err = error.response;
             if (err != undefined) {
-                console.log(`Lambda [ ${lambdaurl} ] is down !! `,  err.data.message);
+                console.log(`Lambda [ ${lambdaurl} \t\t] is down !! `,  err.data.message);
                 deactivateLambda(lambdaurl);
                 return UserService.revertUsernamesFlags(id);
             }
             else {
-                console.log(`Lambda [ ${lambdaurl} ] is down !!  Some Other Error !!`);
+                console.log(`Lambda [ ${lambdaurl} \t\t] is down !!  Some Other Error !!`);
                 deactivateLambda(lambdaurl);
                 return UserService.revertUsernamesFlags(id);
             }
@@ -91,7 +91,7 @@ function restart() {
     setTimeout(() => {
         console.log("\nRestarting. . .\n");
         intervalManager(true, launch, random_time);
-    }, 1200000*2); //1200000 is 20 minutes
+    }, 1200000); //1200000 is 20 minutes
 }
 
 function deactivateLambda(url) {
@@ -120,6 +120,17 @@ function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
     return array;
 }
+
+
+
+function sendMail(){
+
+    
+}
+
+
+
+
 
 async function launch() {
     const activelambdas = getActiveLambdas();
