@@ -91,7 +91,7 @@ function restart() {
     setTimeout(() => {
         console.log("\nRestarting. . .\n");
         intervalManager(true, launch, random_time);
-    }, 1800000/4); //1800000 is 30 minutes
+    }, 1800000/5); //1800000 is 30 minutes
 }
 
 function deactivateLambda(url) {
