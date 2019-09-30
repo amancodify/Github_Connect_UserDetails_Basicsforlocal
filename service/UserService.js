@@ -8,8 +8,16 @@ var UserModel = require('../model/UserModel');
 exports.createUserDetails = async function (userdetails, id, username) {
     return await UserModel.UserDetails.create(userdetails, (err) => {
         if (err) {
-            console.log("Error while Inserting into MongoDB:", err);
-            exports.revertUsernamesFlags(id);
+            console.log("Error while Inserting into MongoDB:", err.code);
+            if(err.code == 11000)
+            {
+                exports.updateUsernamesFlags(id);
+            }
+            else
+            {
+                exports.revertUsernamesFlags(id);
+            }
+            
         }
         else {
             console.log("-------------------------------------------------------------------------------------------------");
