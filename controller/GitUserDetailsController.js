@@ -1,7 +1,7 @@
 var UserService = require("../service/UserService");
 var UserModel = require('../model/UserModel');
 const axios = require('axios');
-var random_time = Math.floor(Math.random() * (50000 - 40000) + 40000);
+var random_time = Math.floor(Math.random() * (45000 - 40000) + 40000);
 var refreshIntervalId = null;
 var lambda_urls = [
     { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio", active: true },
@@ -91,7 +91,7 @@ function restart() {
     setTimeout(() => {
         console.log("\nRestarting. . .\n");
         intervalManager(true, launch, random_time);
-    }, 1800000/18); //1800000 is 30 minutes
+    }, 1800000/25); //1800000 is 30 minutes
 }
 
 function deactivateLambda(url) {
