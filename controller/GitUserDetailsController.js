@@ -124,7 +124,7 @@ function shuffle(array) {
 async function launch() {
     const activelambdas = getActiveLambdas();
     console.log("\n Total ", activelambdas.length, " Lambdas are Active !!\n");
-    if (activelambdas.length > 2) {
+    if (activelambdas.length > 4) {
         const shuffledlambda = await shuffle(activelambdas);
         const usernames = await getusernamesbatch(shuffledlambda.length);
         for (let i = 0; i < shuffledlambda.length; i++) {
