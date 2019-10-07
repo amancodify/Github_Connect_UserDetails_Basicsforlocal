@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 var UserModel = require('../model/UserModel');
-// mongoose.connect('mongodb://localhost/GitHub_DB', { useNewUrlParser: true })
-    mongoose.connect('mongodb+srv://echo_github_write_access:lsozMgFfFq1vKoLc@cluster0-yjgj9.mongodb.net/github?retryWrites=true&w=majority', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost/GitHub_DB', { useNewUrlParser: true })
+    // mongoose.connect('mongodb+srv://echo_github_write_access:lsozMgFfFq1vKoLc@cluster0-yjgj9.mongodb.net/github?retryWrites=true&w=majority', { useNewUrlParser: true })
     .then(() => console.log('Connected to MongoDB...\n'))
     .catch(err => console.error('Cannot connect to DB', err))
 
