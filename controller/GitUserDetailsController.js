@@ -153,10 +153,10 @@ async function launch() {
         for (let i = 0; i < activelambdas.length; i++) {
             if(i<=17)
             {
-            await getUserDetails("amancodiify","12312537127635612", activelambdas[i]);
+            await getUserDetails(usernames[0].Username, usernames[i]._id, activelambdas[i]);
             }
             else{
-            await getUserDetails(usernames[i].Username, usernames[i]._id, activelambdas[i]);
+            await getUserDetails(usernames[i-18].Username, usernames[i-18]._id, activelambdas[i]);
             }   
         }
     }
