@@ -1,7 +1,7 @@
 var UserService = require("../service/UserService");
 var UserModel = require('../model/UserModel');
 const axios = require('axios');
-var random_time = Math.floor(Math.random() * (35000 - 30000) + 30000);
+var random_time = Math.floor(Math.random() * (55000 - 50000) + 50000);
 var refreshIntervalId = null;
 var lambda_urls = [
     { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
@@ -147,17 +147,11 @@ function shuffle(array) {
 async function launch() {
     const activelambdas = getActiveLambdas();
     console.log("\n Total ", activelambdas.length, " Lambdas are Active !!\n");
-    if (activelambdas.length > 0) {
+    if (activelambdas.length > 17) {
         // const shuffledlambda = await shuffle(activelambdas);
         const usernames = await getusernamesbatch(activelambdas.length);
         for (let i = 0; i < activelambdas.length; i++) {
-            // if(i<=17)
-            // {
-            // await getUserDetails(usernames[0].Username, usernames[i]._id, activelambdas[i]);
-            // }
-            // else{
             await getUserDetails(usernames[i].Username, usernames[i]._id, activelambdas[i]);
-            // }   
         }
     }
     else {
