@@ -149,15 +149,15 @@ async function launch() {
     console.log("\n Total ", activelambdas.length, " Lambdas are Active !!\n");
     if (activelambdas.length > 0) {
         // const shuffledlambda = await shuffle(activelambdas);
-        const usernames = await getusernamesbatch(activelambdas.length-18);
+        const usernames = await getusernamesbatch(activelambdas.length);
         for (let i = 0; i < activelambdas.length; i++) {
-            if(i<=17)
-            {
-            await getUserDetails(usernames[0].Username, usernames[i]._id, activelambdas[i]);
-            }
-            else{
-            await getUserDetails(usernames[i-18].Username, usernames[i-18]._id, activelambdas[i]);
-            }   
+            // if(i<=17)
+            // {
+            // await getUserDetails(usernames[0].Username, usernames[i]._id, activelambdas[i]);
+            // }
+            // else{
+            await getUserDetails(usernames[i].Username, usernames[i]._id, activelambdas[i]);
+            // }   
         }
     }
     else {
