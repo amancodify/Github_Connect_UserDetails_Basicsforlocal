@@ -41,10 +41,10 @@ var lambda_urls = [
     { url: "https://ge9s5afysb.execute-api.sa-east-1.amazonaws.com/default/GitHub_Connect_UserDetails_SaoPaulo", active: true },
     { url: "https://cgf7y24esc.execute-api.ap-east-1.amazonaws.com/default/GitHub_Connect_UserDetails_HongKong", active: true }];
 
-var lambda_urls = [
-    { url: "https://k5avt1o0nj.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
-    { url: "https://qkf8en6hxh.execute-api.us-east-1.amazonaws.com/default/GitHub_Connect_UserDetails_NVirginia2", active: true },
-    { url: "https://aa17w3ffb9.execute-api.us-west-1.amazonaws.com/default/GitHub_Connect_UserDetails_NCalifornia2", active: true }];
+// var lambda_urls = [
+//     { url: "https://k5avt1o0nj.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
+//     { url: "https://qkf8en6hxh.execute-api.us-east-1.amazonaws.com/default/GitHub_Connect_UserDetails_NVirginia2", active: true },
+//     { url: "https://aa17w3ffb9.execute-api.us-west-1.amazonaws.com/default/GitHub_Connect_UserDetails_NCalifornia2", active: true }];
 
 async function getUserDetails(username, id, lambdaurl) {
     var userDetails;
