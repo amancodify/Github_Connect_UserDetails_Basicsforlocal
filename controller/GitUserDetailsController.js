@@ -187,6 +187,7 @@ async function launch() {
         restart();
         return await UserService.updateBrokenUsernames();
     }
+    return await UserService.updateBrokenUsernames();
 }
 
 intervalManager(true, launch, random_time);
