@@ -171,15 +171,19 @@ async function launch() {
     if (activelambdas.length > 5) {
         const shuffledlambda = await shuffle(activelambdas);
         const usernames = await getusernamesbatch(activelambdas.length);
-        const iteration_count = dummy_iteration + activelambdas.length;
-        for (let i = 0; i < iteration_count; i++) {
-            if (i < iteration_count - activelambdas.length) {
+        // console.log(usernames);
+        // const iteration_count = dummy_iteration + activelambdas.length;
+        // const dummylamb_count = iteration_count - activelambdas.length;
+        for (let i = 1; i <= dummy_iteration + 1; i++) {
+            if (i <= dummy_iteration) {
                 await getgitUserDetails("amancodify","3712537162537612", dummyLambda[0].url);
             }
             else {
-                await getgitUserDetails(usernames[iteration_count - i].Username, usernames[iteration_count - i]._id, shuffledlambda[iteration_count - i]);
+                for(let y=0; y< activelambdas.length; y++)
+                {
+                    await getgitUserDetails(usernames[y].Username, usernames[y]._id, shuffledlambda[y]);
+                }
             }
-
         }
     }
     else {
