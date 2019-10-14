@@ -348,6 +348,7 @@ function shuffle(array) {
 }
 
 async function launch() {
+    count = 0;
     const activelambdas = getActiveLambdas();
     console.log("\n Total ", activelambdas.length, " Lambdas are Active !!\n");
     if (activelambdas.length > 220) {
