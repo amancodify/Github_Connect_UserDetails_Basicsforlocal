@@ -95,14 +95,20 @@ async function getgitUserDetails(username, id, lambdaurl) {
         .catch(error => {
             var err = error.response;
             if (err != undefined) {
-                console.log(`Lambda [ \x1b[31m${lambdaurl}\x1b[37m ]   is down !! `, err.data.message);
-                deactivateLambda(lambdaurl);
-                return UserService.revertUsernamesFlags(id);
+                console.log(`Lambda [ \x1b[31m${lambdaurl}\x1b[37m ]   is down !! `, err.data.message, counter += 1 );
+                if(username != "amancodify")
+                {
+                    deactivateLambda(lambdaurl);
+                    return UserService.revertUsernamesFlags(id);
+                }
             }
             else {
-                console.log(`Lambda [ \x1b[31m${lambdaurl}\x1b[37m ]   is down !!  Some Other Error !!`);
-                deactivateLambda(lambdaurl);
-                return UserService.revertUsernamesFlags(id);
+                console.log(`Lambda [ \x1b[31m${lambdaurl}\x1b[37m ]   is down !!  Some Other Error !!`, counter += 1 );
+                if(username != "amancodify")
+                {
+                    deactivateLambda(lambdaurl);
+                    return UserService.revertUsernamesFlags(id);
+                }
             }
         });
 }
@@ -134,7 +140,7 @@ function resetLambdas() {
     for (let i in lambda_urls) {
         lambda_urls[i].active = true;
     }
-    console.log("All Lamdas Reset");
+    console.log("All Lamdas got Reset to ACTIVE State. . .");
 }
 
 function getActiveLambdas() {
@@ -167,8 +173,8 @@ async function launch() {
         const usernames = await getusernamesbatch(activelambdas.length);
         const iteration_count = dummy_iteration + activelambdas.length;
         for (let i = 0; i < iteration_count; i++) {
-            if (i <= iteration_count - activelambdas.length) {
-                await getUserDetails_dummy("amancodify", dummyLambda[0].url);
+            if (i < iteration_count - activelambdas.length) {
+                await getgitUserDetails("amancodify","3712537162537612", dummyLambda[0].url);
             }
             else {
                 await getgitUserDetails(usernames[iteration_count - i].Username, usernames[iteration_count - i]._id, shuffledlambda[iteration_count - i]);
