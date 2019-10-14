@@ -138,7 +138,7 @@ async function dummy() {
 }
 
 async function launch() {
-    dummy();
+    await dummy();
     const activelambdas = getActiveLambdas();
     console.log("\n Total ", activelambdas.length, " Lambdas are Active !!\n");
     if (activelambdas.length > 5) {
