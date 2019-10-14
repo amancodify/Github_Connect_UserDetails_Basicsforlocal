@@ -1,8 +1,9 @@
 var UserService = require("../service/UserService");
 var UserModel = require('../model/UserModel');
 const axios = require('axios');
-var random_time = Math.floor(Math.random() * (130000 - 120000) + 120000);
+var random_time = Math.floor(Math.random() * (170000 - 160000) + 160000);
 var refreshIntervalId = null;
+var count = 0;
 var lambda_urls = [
     { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
     { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
@@ -289,7 +290,7 @@ async function getUserDetails(username, id, lambdaurl) {
         .catch(error => {
             var err = error.response;
             if (err != undefined) {
-                console.log(`Lambda [ \x1b[31m${lambdaurl}\x1b[37m ]   is down !! `, err.data.message);
+                console.log(`Lambda [ \x1b[31m${lambdaurl}\x1b[37m ]   is down !! `, err.data.message, count +=1);
                 deactivateLambda(lambdaurl);
                 return UserService.revertUsernamesFlags(id);
             }
