@@ -3,7 +3,7 @@ var UserModel = require('../model/UserModel');
 const axios = require('axios');
 var random_time = Math.floor(Math.random() * (90000 - 85000) + 85000);
 var refreshIntervalId = null;
-var dummy_iteration = 180;
+var dummy_iteration = 210;
 var counter = 0;
 var lambda_urls = [
     { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio", active: true },
