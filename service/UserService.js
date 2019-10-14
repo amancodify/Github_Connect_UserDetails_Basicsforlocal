@@ -5,7 +5,7 @@ var UserModel = require('../model/UserModel');
     .then(() => console.log('Connected to MongoDB...\n'))
     .catch(err => console.error('Cannot connect to DB', err))
 
-exports.createUserDetails = async function (userdetails, id, username) {
+exports.createUserDetails = async function (userdetails, id, username, lambdaurl) {
     return await UserModel.UserDetails.create(userdetails, (err) => {
         if (err) {
             console.log("Error while Inserting into MongoDB:", err.code);
@@ -22,6 +22,7 @@ exports.createUserDetails = async function (userdetails, id, username) {
         else {
             console.log("-------------------------------------------------------------------------------------------------");
             console.log("|\tCurrent user Fetched from MongoDB-------------------> [\x1b[36m", username, "\x1b[37m]");
+            console.log("|\tLambda URL-------------------> [\x1b[36m", lambdaurl, "\x1b[37m]");
             console.log(`|\t\x1b[32mHurry!! Details of the user \x1b[32m inserted successfully into MongoDB...\x1b[37m\t\t\t|`);
             UserModel.totalUserDetails_count();
             exports.updateUsernamesFlags(id);

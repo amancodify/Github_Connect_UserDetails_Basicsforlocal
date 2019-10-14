@@ -302,7 +302,7 @@ async function getUserDetails(username, id, lambdaurl) {
                     Repositories: userDetails.Repositories,
                 });
                 alluserdetails.push(gituserdetail);
-                return UserService.createUserDetails(alluserdetails, id, username);
+                return UserService.createUserDetails(alluserdetails, id, username, lambdaurl);
             }
             else {
                 console.log(`\x1b[31mError While fetching User Details from github..Resetting the username id into orignal state\x1b[37m \n\n`);
