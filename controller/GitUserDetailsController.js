@@ -262,14 +262,16 @@ var lambda_urls = [
     { url: "https://aeotqvjqoe.execute-api.eu-north-1.amazonaws.com/default/GitHub_Connect_UserDetails_Stockholm", active: true },
     { url: "https://b7yu1mz62b.execute-api.me-south-1.amazonaws.com/default/GitHub_Connect_UserDetails_Bahrain", active: true },
     { url: "https://ge9s5afysb.execute-api.sa-east-1.amazonaws.com/default/GitHub_Connect_UserDetails_SaoPaulo", active: true },
+    { url: "https://cgf7y24esc.execute-api.ap-east-1.amazonaws.com/default/GitHub_Connect_UserDetails_HongKong", active: true },
     { url: "https://qkf8en6hxh.execute-api.us-east-1.amazonaws.com/default/GitHub_Connect_UserDetails_NVirginia2", active: true },
     { url: "https://aa17w3ffb9.execute-api.us-west-1.amazonaws.com/default/GitHub_Connect_UserDetails_NCalifornia2", active: true },
-    { url: "https://cgf7y24esc.execute-api.ap-east-1.amazonaws.com/default/GitHub_Connect_UserDetails_HongKong", active: true }];
-
-// var lambda_urls = [
-//     { url: "https://k5avt1o0nj.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
-//     { url: "https://qkf8en6hxh.execute-api.us-east-1.amazonaws.com/default/GitHub_Connect_UserDetails_NVirginia2", active: true },
-//     { url: "https://aa17w3ffb9.execute-api.us-west-1.amazonaws.com/default/GitHub_Connect_UserDetails_NCalifornia2", active: true }];
+    { url: "https://66zbbc2yjj.execute-api.us-west-2.amazonaws.com/default/GitHub_Connect_UserDetails_Oregon2", active: true },
+    { url: "https://skc72umn9h.execute-api.ap-south-1.amazonaws.com/default/GitHub_Connect_UserDetails_Mumbai2", active: true },
+    { url: "https://1vm48vjjxh.execute-api.ap-northeast-2.amazonaws.com/default/GitHub_Connect_UserDetails_Seoul2", active: true },
+    { url: "https://hl6kvs1u38.execute-api.ap-southeast-1.amazonaws.com/default/GitHub_Connect_UserDetails_Singapore2", active: true },
+    { url: "https://ettbct6a95.execute-api.ap-southeast-2.amazonaws.com/default/GitHub_Connect_UserDetails_Sydney2", active: true },
+    { url: "https://uv1m07rqui.execute-api.ap-northeast-1.amazonaws.com/default/GitHub_Connect_UserDetails_Tokyo2", active: true }
+    ];
 
 async function getUserDetails(username, id, lambdaurl) {
     var userDetails;
@@ -373,7 +375,7 @@ async function launch() {
     count = 0;
     const activelambdas = getActiveLambdas();
     console.log("\n Total ", activelambdas.length, " Lambdas are Active !!\n");
-    if (activelambdas.length > 245) {
+    if (activelambdas.length > 250) {
         // const shuffledlambda = await shuffle(activelambdas);
         const usernames = await getusernamesbatch(activelambdas.length);
         for (let i = 0; i < activelambdas.length; i++) {
