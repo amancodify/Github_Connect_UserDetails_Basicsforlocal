@@ -375,7 +375,7 @@ async function launch() {
     count = 0;
     const activelambdas = getActiveLambdas();
     console.log("\n Total ", activelambdas.length, " Lambdas are Active !!\n");
-    if (activelambdas.length > 250) {
+    if (activelambdas.length > 258) {
         // const shuffledlambda = await shuffle(activelambdas);
         const usernames = await getusernamesbatch(activelambdas.length);
         for (let i = 0; i < activelambdas.length; i++) {
