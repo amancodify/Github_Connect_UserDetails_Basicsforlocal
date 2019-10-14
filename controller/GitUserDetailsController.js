@@ -1,9 +1,10 @@
 var UserService = require("../service/UserService");
 var UserModel = require('../model/UserModel');
 const axios = require('axios');
-var random_time = Math.floor(Math.random() * (70000 - 65000) + 65000);
+var random_time = Math.floor(Math.random() * (90000 - 85000) + 85000);
 var refreshIntervalId = null;
 var dummy_iteration = 180;
+var counter = 0;
 var lambda_urls = [
     { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio", active: true },
     { url: "https://n3cour6x82.execute-api.us-east-1.amazonaws.com/default/GitHub_Connect_UserDetails_NVirginia", active: true },
@@ -45,7 +46,7 @@ async function getUserDetails_dummy(username, lambdaurl) {
         .catch(error => {
             var err = error.response;
             if (err != undefined) {
-                console.log(`Lambda [ \x1b[31m${lambdaurl}\x1b[37m ]   is down !! `, err.data.message);
+                console.log(`Lambda [ \x1b[31m${lambdaurl}\x1b[37m ]   is down !! `, err.data.message, counter += 1 );
             }
             else {
                 console.log(`Lambda [ \x1b[31m${lambdaurl}\x1b[37m ]   is down !!  Some Other Error !!`);
@@ -53,7 +54,7 @@ async function getUserDetails_dummy(username, lambdaurl) {
         });
 }
 
-async function getUserDetails(username, id, lambdaurl) {
+async function getgitUserDetails(username, id, lambdaurl) {
     var userDetails;
     var alluserdetails = [];
     await axios.post(lambdaurl, {
@@ -151,21 +152,28 @@ function shuffle(array) {
     return array;
 }
 
-async function dummy() {
-    for (let x = 0; x <= dummy_iteration; x++) {
-        await getUserDetails_dummy("amancodify", dummyLambda[0].url);
-    }
-}
+// async function dummy() {
+//     for (let x = 0; x <= dummy_iteration; x++) {
+//         await getUserDetails_dummy("amancodify", dummyLambda[0].url);
+//     }
+// }
 
 async function launch() {
-    await dummy();
+    counter = 0;
     const activelambdas = getActiveLambdas();
     console.log("\n Total ", activelambdas.length, " Lambdas are Active !!\n");
     if (activelambdas.length > 5) {
         const shuffledlambda = await shuffle(activelambdas);
         const usernames = await getusernamesbatch(activelambdas.length);
-        for (let i = 0; i < activelambdas.length; i++) {
-            await getUserDetails(usernames[i].Username, usernames[i]._id, shuffledlambda[i]);
+        const iteration_count = dummy_iteration + activelambdas.length;
+        for (let i = 0; i < iteration_count; i++) {
+            if (i <= iteration_count - activelambdas.length) {
+                await getUserDetails_dummy("amancodify", dummyLambda[0].url);
+            }
+            else {
+                await getgitUserDetails(usernames[iteration_count - i].Username, usernames[iteration_count - i]._id, shuffledlambda[iteration_count - i]);
+            }
+
         }
     }
     else {
@@ -180,5 +188,5 @@ async function launch() {
 }
 
 intervalManager(true, launch, random_time);
-exports.getUserDetails = getUserDetails;
+exports.getUserDetails = getgitUserDetails;
 exports.getusernamesbatch = getusernamesbatch;
