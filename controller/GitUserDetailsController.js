@@ -324,6 +324,26 @@ var lambda_urls = [
     { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
     { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
     { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
+    { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
+    { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
+    { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
+    { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
+    { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
+    { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
+    { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
+    { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
+    { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
+    { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
+    { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
+    { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
+    { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
+    { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
+    { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
+    { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
+    { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
+    { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
+    { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
+    { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio2", active: true },
 
     { url: "https://4nbczhjlk6.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio", active: true },
     { url: "https://n3cour6x82.execute-api.us-east-1.amazonaws.com/default/GitHub_Connect_UserDetails_NVirginia", active: true },
@@ -473,7 +493,7 @@ async function launch() {
     count = 0;
     const activelambdas = getActiveLambdas();
     console.log("\n Total ", activelambdas.length, " Lambdas are Active !!\n");
-    if (activelambdas.length > 325) {
+    if (activelambdas.length > 345) {
         // const shuffledlambda = await shuffle(activelambdas);
         const usernames = await getusernamesbatch(activelambdas.length);
         for (let i = 0; i < activelambdas.length; i++) {
