@@ -389,6 +389,19 @@ var lambda_urls = [
     { url: "https://7zcg4eu6q3.execute-api.eu-north-1.amazonaws.com/default/GitHub_Connect_UserDetails_Stockholm3", active: true },
     { url: "https://4guilrf13d.execute-api.me-south-1.amazonaws.com/default/GitHub_Connect_UserDetails_Bahrain3", active: true },
     { url: "https://fjfz2rl400.execute-api.sa-east-1.amazonaws.com/default/GitHub_Connect_UserDetails_SaoPaulo3", active: true },
+    { url: "https://jxl13xb8b7.execute-api.us-east-2.amazonaws.com/default/GitHub_Connect_UserDetails_Ohio4", active: true },
+    { url: "https://cg6gfvo1m6.execute-api.us-east-1.amazonaws.com/default/GitHub_Connect_UserDetails_NVirginia4", active: true },
+    { url: "https://nosz7jlr6i.execute-api.us-west-1.amazonaws.com/default/GitHub_Connect_UserDetails_NCalifornia4", active: true },
+    { url: "https://vex77uhyj4.execute-api.us-west-2.amazonaws.com/default/GitHub_Connect_UserDetails_Oregon4", active: true },
+    { url: "https://0qzir60swf.execute-api.ap-south-1.amazonaws.com/default/GitHub_Connect_UserDetails_Mumbai4", active: true },
+    { url: "https://43rn99xo60.execute-api.ap-northeast-2.amazonaws.com/default/GitHub_Connect_UserDetails_Seoul4", active: true },
+    { url: "https://d7qq1bw439.execute-api.ap-southeast-1.amazonaws.com/default/GitHub_Connect_UserDetails_Singapore4", active: true },
+    { url: "https://omftnwtqd6.execute-api.ap-southeast-2.amazonaws.com/default/GitHub_Connect_UserDetails_Sydney4", active: true },
+    { url: "https://u500c2ku0h.execute-api.ap-northeast-1.amazonaws.com/default/GitHub_Connect_UserDetails_Tokyo4", active: true },
+    { url: "https://2nvgu2vd33.execute-api.ca-central-1.amazonaws.com/default/GitHub_Connect_UserDetails_CanadaCentral4", active: true },
+    { url: "https://j2p53slcw6.execute-api.eu-central-1.amazonaws.com/default/GitHub_Connect_UserDetails_Frankfurt4", active: true },
+    { url: "https://5bidpc5qk7.execute-api.eu-west-1.amazonaws.com/default/GitHub_Connect_UserDetails_Ireland4", active: true },
+    { url: "https://jytn9hidt6.execute-api.eu-west-2.amazonaws.com/default/GitHub_Connect_UserDetails_London4", active: true },
     ];
     
 async function getUserDetails(username, id, lambdaurl) {
