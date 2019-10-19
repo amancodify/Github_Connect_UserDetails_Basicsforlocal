@@ -620,7 +620,8 @@ async function launch() {
     //     restart();
     //     return await UserService.updateBrokenUsernames();
     // }
-    return await UserService.updateBrokenUsernames();
+    await UserService.updateBrokenUsernames();
+    console.log("All Reset");
 }
 
 intervalManager(true, launch, 1000);
