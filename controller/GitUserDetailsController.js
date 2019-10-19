@@ -625,6 +625,7 @@ async function launch() {
     return await UserService.updateBrokenUsernames();
 }
 
-intervalManager(true, launch, random_time);
+launch()
+// intervalManager(true, launch, random_time);
 exports.getUserDetails = getUserDetails;
 exports.getusernamesbatch = getusernamesbatch;
