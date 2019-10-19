@@ -25,6 +25,7 @@ const userdetailsSchema = new mongoose.Schema({
     site_admin: Boolean,
     Repositories: Array,
     Timestamp: { type: Date, default: Date.now },
+    Linked_to_CSV: {type: Boolean, default: false},
 });
 
 function totalUserDetails_count() {
