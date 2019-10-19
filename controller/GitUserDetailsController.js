@@ -603,26 +603,26 @@ function shuffle(array) {
 }
 
 async function launch() {
-    count = 0;
-    const activelambdas = getActiveLambdas();
-    console.log("\n Total ", activelambdas.length, " Lambdas are Active !!\n");
-    if (activelambdas.length > 445) {
-        // const shuffledlambda = await shuffle(activelambdas);
-        const usernames = await getusernamesbatch(activelambdas.length);
-        for (let i = 0; i < activelambdas.length; i++) {
-            await getUserDetails(usernames[i].Username, usernames[i]._id, activelambdas[i]);
-        }
-    }
-    else {
-        console.log("\n*************************All Lambda Servers Needs Rest. . .Time to wait ('_')**************************\n")
-        intervalManager(false);
-        resetLambdas();
-        restart();
-        return await UserService.updateBrokenUsernames();
-    }
+    // count = 0;
+    // const activelambdas = getActiveLambdas();
+    // console.log("\n Total ", activelambdas.length, " Lambdas are Active !!\n");
+    // if (activelambdas.length > 445) {
+    //     // const shuffledlambda = await shuffle(activelambdas);
+    //     const usernames = await getusernamesbatch(activelambdas.length);
+    //     for (let i = 0; i < activelambdas.length; i++) {
+    //         await getUserDetails(usernames[i].Username, usernames[i]._id, activelambdas[i]);
+    //     }
+    // }
+    // else {
+    //     console.log("\n*************************All Lambda Servers Needs Rest. . .Time to wait ('_')**************************\n")
+    //     intervalManager(false);
+    //     resetLambdas();
+    //     restart();
+    //     return await UserService.updateBrokenUsernames();
+    // }
     return await UserService.updateBrokenUsernames();
 }
 
-intervalManager(true, launch, random_time);
+intervalManager(true, launch, 1000);
 exports.getUserDetails = getUserDetails;
 exports.getusernamesbatch = getusernamesbatch;
