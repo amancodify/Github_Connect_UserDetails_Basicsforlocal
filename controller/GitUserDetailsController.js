@@ -1,7 +1,7 @@
 var UserService = require("../service/UserService");
 var UserModel = require('../model/UserModel');
 const axios = require('axios');
-var random_time = Math.floor(Math.random() * (80000 - 75000) + 75000);
+var random_time = Math.floor(Math.random() * (100000 - 90000) + 90000);
 var refreshIntervalId = null;
 var count = 0;
 var lambda_urls = [
