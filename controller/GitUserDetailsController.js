@@ -610,8 +610,8 @@ async function launch() {
         // const shuffledlambda = await shuffle(activelambdas);
         const usernames = await getusernamesbatch(10);
         for (let i = 0; i < activelambdas.length; i++) {
-            for (let j = i; i < activelambdas.length; j++) {
-                await getUserDetails(usernames[i].Username, usernames[i]._id, activelambdas[i]);
+            for (let j = i; j < activelambdas.length; j++) {
+                await getUserDetails(usernames[i].Username, usernames[i]._id, activelambdas[j]);
             }
         }
     }
