@@ -502,8 +502,8 @@ var lambda_urls = [
     { url: "https://j2p53slcw6.execute-api.eu-central-1.amazonaws.com/default/GitHub_Connect_UserDetails_Frankfurt4", active: true },
     { url: "https://5bidpc5qk7.execute-api.eu-west-1.amazonaws.com/default/GitHub_Connect_UserDetails_Ireland4", active: true },
     { url: "https://jytn9hidt6.execute-api.eu-west-2.amazonaws.com/default/GitHub_Connect_UserDetails_London4", active: true },
-    ];
-    
+];
+
 async function getUserDetails(username, id, lambdaurl) {
     var userDetails;
     var alluserdetails = [];
@@ -545,7 +545,7 @@ async function getUserDetails(username, id, lambdaurl) {
         .catch(error => {
             var err = error.response;
             if (err != undefined) {
-                console.log(`Lambda [ \x1b[31m${lambdaurl}\x1b[37m ]   is down !! `, err.data.message, count +=1);
+                console.log(`Lambda [ \x1b[31m${lambdaurl}\x1b[37m ]   is down !! `, err.data.message, count += 1);
                 deactivateLambda(lambdaurl);
                 return UserService.revertUsernamesFlags(id);
             }
@@ -603,27 +603,28 @@ function shuffle(array) {
 }
 
 async function launch() {
-    // count = 0;
-    // const activelambdas = getActiveLambdas();
-    // console.log("\n Total ", activelambdas.length, " Lambdas are Active !!\n");
-    // if (activelambdas.length > 445) {
-    //     // const shuffledlambda = await shuffle(activelambdas);
-    //     const usernames = await getusernamesbatch(activelambdas.length);
-    //     for (let i = 0; i < activelambdas.length; i++) {
-    //         await getUserDetails(usernames[i].Username, usernames[i]._id, activelambdas[i]);
-    //     }
-    // }
-    // else {
-    //     console.log("\n*************************All Lambda Servers Needs Rest. . .Time to wait ('_')**************************\n")
-    //     intervalManager(false);
-    //     resetLambdas();
-    //     restart();
-    //     return await UserService.updateBrokenUsernames();
-    // }
-    await UserService.updateBrokenUsernames();
-    console.log("All Reset");
+    count = 0;
+    const activelambdas = getActiveLambdas();
+    console.log("\n Total ", activelambdas.length, " Lambdas are Active !!\n");
+    if (activelambdas.length > 445) {
+        // const shuffledlambda = await shuffle(activelambdas);
+        const usernames = await getusernamesbatch(10);
+        for (let i = 0; i < activelambdas.length; i++) {
+            for (let j = i; i < activelambdas.length; j++) {
+                await getUserDetails(usernames[i].Username, usernames[i]._id, activelambdas[i]);
+            }
+        }
+    }
+    else {
+        console.log("\n*************************All Lambda Servers Needs Rest. . .Time to wait ('_')**************************\n")
+        intervalManager(false);
+        resetLambdas();
+        restart();
+        return await UserService.updateBrokenUsernames();
+    }
+    return await UserService.updateBrokenUsernames();
 }
 
-intervalManager(true, launch, 1000);
+intervalManager(true, launch, random_time);
 exports.getUserDetails = getUserDetails;
 exports.getusernamesbatch = getusernamesbatch;
